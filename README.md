@@ -1,9 +1,9 @@
 
 # Flutter Projesi
 
-  
 
-![İstinye Üniversitesi](https://www.unitededucation.com/linklogoch/istinye-university-logo.png)
+![İstinye Üniversitesi](https://upload.wikimedia.org/wikipedia/commons/d/d9/%C4%B0stinye_%C3%9Cniversitesi_logo.svg)
+
 
   
 

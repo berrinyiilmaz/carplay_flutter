@@ -7,17 +7,17 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255,187,178,200),
+      backgroundColor: const Color.fromARGB(255,187,178,200),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Logo ve yükleme göstergesi bölümü
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Column(
               children: [
                 // Logo bölümü
-                Container(
+                SizedBox(
                   width: 150,
                   height: 150,
                   child: Image.asset(

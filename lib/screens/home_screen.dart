@@ -1,5 +1,7 @@
+import 'package:carplay_flutter/core/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,12 +9,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212), // Spotify tarzı koyu tema
+      backgroundColor: const Color.fromARGB(255, 237, 188, 233), // Spotify tarzı koyu tema
 
       // AppBar
       appBar: AppBar(
-        backgroundColor: const Color(0xFF121212),
-        title: const Text('Müzik Uygulaması', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color.fromARGB(255, 243, 182, 238),
+        title: const Text('CarPlay', style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.bell, color: Colors.white),
@@ -28,18 +30,18 @@ class HomeScreen extends StatelessWidget {
             // Drawer Header
             Container(
               height: 200,
-              color: Colors.blueGrey,
+              color: const Color.fromARGB(255, 233, 194, 238),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     CupertinoIcons.person_circle,
-                    size: 80,
+                    size: 120,
                     color: Colors.white,
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Kullanıcı Adı',
+                    'Berrin Yılmaz',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -56,6 +58,15 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+
+            ListTile(
+              leading: const Icon(CupertinoIcons.home),
+              title: const Text('Son Çalınanlar'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
             ListTile(
               leading: const Icon(CupertinoIcons.settings),
               title: const Text('Ayarlar'),
@@ -82,7 +93,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 10, // Çalma listesi sayısı
+              itemCount: 5, // Çalma listesi sayısı
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: const Icon(CupertinoIcons.music_note, color: Colors.white),
@@ -95,7 +106,7 @@ class HomeScreen extends StatelessWidget {
 
           // Oynatma Kontrolleri
           Container(
-            color: const Color(0xFF1DB954), // Spotify yeşili
+            color: const Color.fromARGB(255, 154, 206, 243), // Spotify yeşili
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -160,27 +171,44 @@ class HomeScreen extends StatelessWidget {
       ),
 
       // Alt navigasyon çubuğu
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 204, 141, 187),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: const Color.fromARGB(137, 176, 149, 182),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
-            label: 'Ana Sayfa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.search),
-            label: 'Arama',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person),
-            label: 'Profil',
-          ),
-        ],
-        onTap: (index) {
-          // Navigasyon işlemleri buraya gelecek
-        },
+      bottomNavigationBar: Container(
+        color: const Color.fromARGB(255, 204, 141, 187), // Arka plan rengi
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: const Icon(
+                CupertinoIcons.home,
+                color: Color.fromARGB(255, 240, 236, 239), // Seçili renk
+              ),
+              onPressed: () {
+                // Ana Sayfa'ya navigasyon
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                CupertinoIcons.search,
+                color: Color.fromARGB(255, 255, 255, 255), // Seçili olmayan renk
+              ),
+              onPressed: () {
+                // Arama sayfasına navigasyon
+              },
+            ),
+            IconButton(
+              onPressed:() {
+                context.go ("/profile");
+              },
+              icon: const Icon(
+              CupertinoIcons.person,
+                color: Color.fromARGB(255, 255, 255, 255), // Seçili olmayan renk
+              ),
+              
+                // Profil sayfasına navigasyon
+              
+            ),
+          ],
+        ),
       ),
     );
   }

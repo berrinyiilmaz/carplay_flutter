@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 237, 188, 233), // Spotify tarzı koyu tema
+      backgroundColor: const Color.fromARGB(255, 239, 190, 223), // Spotify tarzı koyu tema
 
       // AppBar
       appBar: AppBar(
@@ -58,15 +58,13 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-
             ListTile(
-              leading: const Icon(CupertinoIcons.home),
+              leading: const Icon(CupertinoIcons.music_note_list),
               title: const Text('Son Çalınanlar'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
-
             ListTile(
               leading: const Icon(CupertinoIcons.settings),
               title: const Text('Ayarlar'),
@@ -92,15 +90,70 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 5, // Çalma listesi sayısı
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: const Icon(CupertinoIcons.music_note, color: Colors.white),
-                  title: Text('Çalma Listesi ${index + 1}', style: const TextStyle(color: Colors.white)),
+            child: ListView(
+              children: [
+                ListTile(
+
+                  title: const Text(
+                    'Chill Hits',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subtitle: const Text(
+                    'Rahatlatıcı şarkılar',
+                    style: TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
                   onTap: () {},
-                );
-              },
+                ),
+                ListTile(
+                  
+                  title: const Text(
+                    'Workout',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subtitle: const Text(
+                    'Enerji dolu şarkılar',
+                    style: TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                  onTap: () {},
+                ),
+                ListTile(
+                  
+                  title: const Text(
+                    'Top Hits',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subtitle: const Text(
+                    'Popüler şarkılar',
+                    style: TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                  onTap: () {},
+                ),
+                ListTile(
+                  
+                  title: const Text(
+                    'Classical',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subtitle: const Text(
+                    'Klasik müzik',
+                    style: TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                  onTap: () {},
+                ),
+                ListTile(
+                 
+                    
+                  title: const Text(
+                    'Rock Anthems',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subtitle: const Text(
+                    'Efsanevi rock şarkıları',
+                    style: TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                  onTap: () {},
+                ),
+              ],
             ),
           ),
 
@@ -169,6 +222,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+
+      
+
 
       // Alt navigasyon çubuğu
       bottomNavigationBar: Container(

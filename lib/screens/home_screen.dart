@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 239, 190, 223), // Spotify tarzı koyu tema
 
-      // AppBar
+  
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 243, 182, 238),
         title: const Text('CarPlay', style: TextStyle(color: Colors.white)),
@@ -23,11 +23,11 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
 
-      // Drawer (Yan Menü)
+      
       drawer: Drawer(
         child: Column(
           children: [
-            // Drawer Header
+            
             Container(
               height: 200,
               color: const Color.fromARGB(255, 233, 194, 238),
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
 
-      // Ana içerik (Çalma Listeleri)
+      
       body: Column(
         children: [
           const Padding(
@@ -157,14 +157,14 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          // Oynatma Kontrolleri
+          
           Container(
             color: const Color.fromARGB(255, 154, 206, 243), // Spotify yeşili
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Şarkı Bilgisi
+                
                 Row(
                   children: [
                     const Icon(CupertinoIcons.music_note, color: Colors.white, size: 40),
@@ -189,8 +189,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-
-                // İlerleme Çubuğu
+                
                 Slider(
                   value: 30,
                   max: 100,
@@ -199,7 +198,7 @@ class HomeScreen extends StatelessWidget {
                   inactiveColor: Colors.white54,
                 ),
 
-                // Oynatma Tuşları
+                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -226,9 +225,9 @@ class HomeScreen extends StatelessWidget {
       
 
 
-      // Alt navigasyon çubuğu
+      
       bottomNavigationBar: Container(
-        color: const Color.fromARGB(255, 204, 141, 187), // Arka plan rengi
+        color: const Color.fromARGB(255, 204, 141, 187), 
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -236,19 +235,19 @@ class HomeScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(
                 CupertinoIcons.home,
-                color: Color.fromARGB(255, 240, 236, 239), // Seçili renk
+                color: Color.fromARGB(255, 240, 236, 239), 
               ),
               onPressed: () {
-                // Ana Sayfa'ya navigasyon
+                
               },
             ),
             IconButton(
               icon: const Icon(
                 CupertinoIcons.search,
-                color: Color.fromARGB(255, 255, 255, 255), // Seçili olmayan renk
+                color: Color.fromARGB(255, 255, 255, 255), 
               ),
               onPressed: () {
-                // Arama sayfasına navigasyon
+              
               },
             ),
             IconButton(
@@ -257,10 +256,10 @@ class HomeScreen extends StatelessWidget {
               },
               icon: const Icon(
               CupertinoIcons.person,
-                color: Color.fromARGB(255, 255, 255, 255), // Seçili olmayan renk
+                color: Color.fromARGB(255, 255, 255, 255), 
               ),
               
-                // Profil sayfasına navigasyon
+                
               
             ),
           ],

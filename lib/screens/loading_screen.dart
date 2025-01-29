@@ -10,59 +10,55 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255,187,178,200),
+      backgroundColor: const Color.fromARGB(255, 187, 178, 200),
       body: SizedBox.expand(
-        
-          // width: double.infinity,
-          child: Column(
-            children: [
-              // Logo bölümü
-                Expanded(
-                child: SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: Image.asset(
-                    'images/logo.webp',
-                    fit: BoxFit.contain,
-                  ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [
+            
+            Expanded(
+              child: SizedBox(
+                width: 150,
+                height: 150,
+                child: Image.asset(
+                  'images/logo.webp',
+                  fit: BoxFit.contain,
                 ),
               ),
-              
+            ),
             
-              //CircularProgressIndicator(),
-             InkWell(
+            
+            const Text(
+              'CarPlay',
+              style: TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 55, 51, 55)
+              ),
+            ),
+            
+            
+            InkWell(
               onTap: () => context.go("/home"),
-  child: SizedBox(
-    width: 350,
-    child: DotLottieLoader.fromAsset(
-      "motions/animation1.lottie",
-      frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
-        if (dotlottie != null) {
-          return Lottie.memory(dotlottie.animations.values.single);
-        } else {
-          return Container();
-        }
-      },
-    ),
-  ),
-),
-
+              child: SizedBox(
+                width: 350,
+                child: DotLottieLoader.fromAsset(
+                  "motions/animation1.lottie",
+                  frameBuilder: (BuildContext ctx, DotLottie? dotlottie) {
+                    if (dotlottie != null) {
+                      return Lottie.memory(dotlottie.animations.values.single);
+                    } else {
+                      return Container();
+                    }
+                  },
+                ),
+              ),
+            ),
             
-            
-            SizedBox(height: 20)
-            
-            
-            
-            
-            
-            
-            ],
-
-
-          ),
+            SizedBox(height: 20),
+          ],
         ),
-      );
-    
+      ),
+    );
   }
-
 }

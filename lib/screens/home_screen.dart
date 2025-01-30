@@ -1,7 +1,11 @@
 import 'package:carplay_flutter/core/routes.dart';
+import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
+import '../widgets/bottom_menu.dart';
+import '../widgets/suggested_action_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,12 +13,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 239, 190, 223), // Spotify tarzı koyu tema
+      backgroundColor: const Color.fromARGB(255, 143, 140, 140), // Spotify-style background
 
-  
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 243, 182, 238),
-        title: const Text('CarPlay', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color.fromARGB(255, 143, 140, 140),
+        title: const Text('CARPLAY', style: TextStyle(color: Color.fromARGB(255, 74, 148, 228))),
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.bell, color: Colors.white),
@@ -23,14 +26,12 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
 
-      
       drawer: Drawer(
         child: Column(
           children: [
-            
             Container(
               height: 200,
-              color: const Color.fromARGB(255, 233, 194, 238),
+              color: const Color.fromARGB(255, 143, 140, 140),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -50,7 +51,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Menü öğeleri
             ListTile(
               leading: const Icon(CupertinoIcons.home),
               title: const Text('Ana Sayfa'),
@@ -76,195 +76,61 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
 
-      
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Çalma Listeleri',
-                style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              children: [
-                ListTile(
-
-                  title: const Text(
-                    'Chill Hits',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  subtitle: const Text(
-                    'Rahatlatıcı şarkılar',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  
-                  title: const Text(
-                    'Workout',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  subtitle: const Text(
-                    'Enerji dolu şarkılar',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  
-                  title: const Text(
-                    'Top Hits',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  subtitle: const Text(
-                    'Popüler şarkılar',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  
-                  title: const Text(
-                    'Classical',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  subtitle: const Text(
-                    'Klasik müzik',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                 
-                    
-                  title: const Text(
-                    'Rock Anthems',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  subtitle: const Text(
-                    'Efsanevi rock şarkıları',
-                    style: TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
-                  onTap: () {},
-                ),
-              ],
-            ),
-          ),
-
-          
-          Container(
-            color: const Color.fromARGB(255, 154, 206, 243), // Spotify yeşili
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                
-                Row(
-                  children: [
-                    const Icon(CupertinoIcons.music_note, color: Colors.white, size: 40),
-                    const SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Şarkı Adı',
-                          style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Sanatçı Adı',
-                          style: TextStyle(color: Colors.white70, fontSize: 14),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      icon: const Icon(CupertinoIcons.heart, color: Colors.white),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-                
-                Slider(
-                  value: 30,
-                  max: 100,
-                  onChanged: (value) {},
-                  activeColor: Colors.white,
-                  inactiveColor: Colors.white54,
-                ),
-
-                
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      icon: const Icon(CupertinoIcons.backward_fill, color: Colors.white, size: 32),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(CupertinoIcons.play_fill, color: Colors.white, size: 40),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(CupertinoIcons.forward_fill, color: Colors.white, size: 32),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-
-      
-
-
-      
-      bottomNavigationBar: Container(
-        color: const Color.fromARGB(255, 204, 141, 187), 
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: SafeArea(
+        child: Column(
           children: [
-            IconButton(
-              icon: const Icon(
-                CupertinoIcons.home,
-                color: Color.fromARGB(255, 240, 236, 239), 
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.all(24),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: DotLottieLoader.fromAsset(
+                     "motions/animation1.lottie",
+                    frameBuilder: (context, dotlottie) {
+                      if (dotlottie != null) {
+                        return Lottie.memory(
+                          dotlottie.animations.values.single,
+                        );
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                ),
               ),
-              onPressed: () {
-                
-              },
             ),
-            IconButton(
-              icon: const Icon(
-                CupertinoIcons.search,
-                color: Color.fromARGB(255, 255, 255, 255), 
+            Expanded(
+              flex: 3,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceVariant,
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+                ),
+                child: ListView(
+                  padding: const EdgeInsets.all(24),
+                  children: [
+                    SuggestedActionCard(
+                      icon: CupertinoIcons.music_note_list,
+                      title: "Son Çalınanlar",
+                      subtitle: "Geçmiş çalınanlarınızı görüntüleyin",
+                      onTap: () => context.push("/history"),
+                    ),
+                    const SizedBox(height: 16),
+                    SuggestedActionCard(
+                      icon: CupertinoIcons.settings,
+                      title: "Ayarlar",
+                      subtitle: "Uygulama ayarlarını özelleştirin",
+                      onTap: () => context.push("/settings"),
+                    ),
+                  ],
+                ),
               ),
-              onPressed: () {
-              
-              },
-            ),
-            IconButton(
-              onPressed:() {
-                context.go ("/profile");
-              },
-              icon: const Icon(
-              CupertinoIcons.person,
-                color: Color.fromARGB(255, 255, 255, 255), 
-              ),
-              
-                
-              
             ),
           ],
         ),
       ),
+
+      bottomNavigationBar: BottomMenu(),
     );
   }
 }

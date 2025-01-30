@@ -1,41 +1,63 @@
-import 'package:carplay_flutter/screens/profile_screen.dart';
-import 'package:carplay_flutter/screens/search_screen.dart';
-import 'package:carplay_flutter/screens/voice_screen.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../screens/history_screen.dart';
 import '../screens/loading_screen.dart';
 import '../screens/home_screen.dart';
 
+import '../screens/profile_screen.dart';
+
+import '../screens/search_screen.dart';
+
+import '../screens/voice_screen.dart';
+
 // Router yapılandırması
 final router = GoRouter(
-  initialLocation: '/',  // Başlangıç rotası
+  initialLocation: '/', // Başlangıç rotası
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const LoadingScreen(),
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const LoadingScreen(),
+      ),
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => const HomeScreen(),
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const HomeScreen(),
+      ),
     ),
     GoRoute(
       path: '/profile',
-      builder:(context, state) => const ProfileScreen(),
-      
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const ProfileScreen(),
+      ),
     ),
     GoRoute(
       path: '/voice',
-      builder:(context, state) => const VoiceScreen(),
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const VoiceScreen(),
+      ),
     ),
-
+    
+    
     GoRoute(
-      path: '/screen',
-      builder:(context, state) => const SearchScreen(),
+      path: '/search',
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const SearchScreen(),
+      ),
+    ),
+    GoRoute(
+      path: '/history',
+      pageBuilder: (context, state) => NoTransitionPage<void>(
+        key: state.pageKey,
+        child: const HistoryScreen(),
+      ),
     ),
   ],
-
-
 );
-
- 
-
+  

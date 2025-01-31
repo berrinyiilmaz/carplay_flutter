@@ -24,6 +24,29 @@ class _HistoryScreenState extends State<HistoryScreen> {
       ),
       body: Column(
         children: [
+          // Playlist kapağını ekliyoruz
+          Container(
+            width: double.infinity,
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.asset(
+                "assets/images/c:\Users\brayl\Downloads\alanbajura.jpg",// Playlist kapağı resminizin yolu
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16), // Arada boşluk bırakıyoruz
           // Geçmiş filtreleme seçenekleri
           Padding(
             padding: const EdgeInsets.all(8),

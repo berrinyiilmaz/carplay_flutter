@@ -124,9 +124,14 @@ lib/
 
 ## Ekran Görüntüleri
 
-[Uygulama ekran görüntüleri buraya eklenecek]
 
-  
+![WhatsApp Image 2025-01-31 at 01 53 46](https://github.com/user-attachments/assets/70c4ad5c-8af8-4270-bcb2-c930a3eece8f)
+
+![WhatsApp Image 2025-01-31 at 01 53 55](https://github.com/user-attachments/assets/a591675c-ce02-428d-97ff-6b2e0603fa6c)
+
+  ![WhatsApp Image 2025-01-31 at 01 54 11](https://github.com/user-attachments/assets/c82afe4d-4444-4d9b-8351-337647b9552d)
+![WhatsApp Image 2025-01-31 at 01 54 05](https://github.com/user-attachments/assets/3748530c-1f18-4228-a535-b9c3eab5749a)
+
 
 ## Projeye Katkı Sağlama
 
@@ -143,6 +148,7 @@ lib/
   
 
 ## Lisans
+![WhatsApp Image 2025-01-31 at 01 53 46](https://github.com/user-attachments/assets/8c45808c-b4a6-47a5-ac6b-9aeeaeaafdbf)
 
 Bu proje, MIT Lisansı kapsamında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasını inceleyebilirsiniz.
 

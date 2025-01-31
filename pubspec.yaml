@@ -11,9 +11,9 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter
+    sdk: flutterr 
   google_fonts: ^6.1.0  # (Güncel versiyonu kullan)
-  provider: ^6.1.5  # (Güncel sürümü kulla
+  provider: ^6.1.2  # (Güncel sürümü kullan)
 
 
   cupertino_icons: ^1.0.8
@@ -38,7 +38,4 @@ flutter:
     - assets/icons/
     - assets/languages/
     - assets/motions/
-     -assets/images/c:\Users\brayl\Downloads\alanbajura.jpg
-
-  
-
+    

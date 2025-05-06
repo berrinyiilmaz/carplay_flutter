@@ -41,7 +41,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
-                "assets/images/c:\Users\brayl\Downloads\alanbajura.jpg",// Playlist kapağı resminizin yolu
+                "assets/images/c:\Users\brayl\Downloads\alanbajura.jpg", // Playlist kapağı resminizin yolu
                 fit: BoxFit.cover,
               ),
             ),
@@ -52,7 +52,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
             padding: const EdgeInsets.all(8),
             child: Card(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Row(
                   children: [
                     const Text('Sırala:', style: TextStyle(fontSize: 16)),
@@ -93,7 +94,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         AspectRatio(
                           aspectRatio: 1,
                           child: Container(
-                            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .surfaceContainerHighest,
                             child: Image.asset(
                               "assets/images/song${index + 1}.jpg", // Şarkı resmi
                               fit: BoxFit.cover,
@@ -106,7 +109,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           child: IconButton(
                             icon: const Icon(Icons.favorite_border),
                             style: IconButton.styleFrom(
-                              backgroundColor: Theme.of(context).colorScheme.surface,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.surface,
                             ),
                             onPressed: () {}, // Favorilere ekleme işlemi
                           ),
@@ -201,10 +205,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
             Wrap(
               spacing: 8,
               children: const [
-                FilterChip(label: Text('Pop'), selected: false, onSelected: null),
-                FilterChip(label: Text('Rock'), selected: false, onSelected: null),
-                FilterChip(label: Text('Hip-Hop'), selected: false, onSelected: null),
-                FilterChip(label: Text('Elektronik'), selected: false, onSelected: null),
+                FilterChip(
+                    label: Text('Pop'), selected: false, onSelected: null),
+                FilterChip(
+                    label: Text('Rock'), selected: false, onSelected: null),
+                FilterChip(
+                    label: Text('Hip-Hop'), selected: false, onSelected: null),
+                FilterChip(
+                    label: Text('Elektronik'),
+                    selected: false,
+                    onSelected: null),
               ],
             ),
           ],

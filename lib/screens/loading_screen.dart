@@ -10,12 +10,11 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 187, 178, 200),
+      backgroundColor: const Color.fromARGB(255, 251, 249, 253),
       body: SizedBox.expand(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, 
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
             Expanded(
               child: SizedBox(
                 width: 150,
@@ -26,18 +25,13 @@ class LoadingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
-            
             const Text(
               'CarPlay',
               style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 55, 51, 55)
-              ),
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 244, 188, 244)),
             ),
-            
-            
             InkWell(
               onTap: () => context.go("/home"),
               child: SizedBox(
@@ -54,7 +48,6 @@ class LoadingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
             SizedBox(height: 20),
           ],
         ),

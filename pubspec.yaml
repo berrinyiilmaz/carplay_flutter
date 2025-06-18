@@ -34,5 +34,7 @@ flutter:
     - assets/icons/
     - assets/languages/
     - assets/motions/
+    - assets/album.jpg/
+
 
   

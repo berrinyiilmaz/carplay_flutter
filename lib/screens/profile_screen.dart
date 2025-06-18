@@ -1,79 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-// Dalgalı AppBar için CustomClipper
-class WaveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, size.height - 20);
-    var firstControlPoint = Offset(size.width / 4, size.height);
-    var firstEndPoint = Offset(size.width / 2, size.height - 20);
-    var secondControlPoint = Offset(size.width * 3 / 4, size.height - 40);
-    var secondEndPoint = Offset(size.width, size.height - 20);
-
-    path.quadraticBezierTo(
-      firstControlPoint.dx,
-      firstControlPoint.dy,
-      firstEndPoint.dx,
-      firstEndPoint.dy,
-    );
-    path.quadraticBezierTo(
-      secondControlPoint.dx,
-      secondControlPoint.dy,
-      secondEndPoint.dx,
-      secondEndPoint.dy,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80),
-        child: ClipPath(
-          clipper: WaveClipper(),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primary,
-                  Theme.of(context).colorScheme.secondary,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              title: Text(
-                'PROFİLİM',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontFamily: 'Oswald',
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-              ),
-              centerTitle: true,
-            ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade400,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'Kitaplığım', // Burada değişiklik yapıldı
+          style: TextStyle(
+            fontFamily: 'Oswald',
+            color: Colors.white,
+            fontSize: 24,
           ),
         ),
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Profil bilgileri
+            // Profil bilgileri kutusu
             Container(
               margin: const EdgeInsets.all(16),
               padding: const EdgeInsets.all(24),
@@ -106,10 +59,9 @@ class ProfileScreen extends StatelessWidget {
                         width: 4,
                       ),
                     ),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 40,
-                      backgroundImage:
-                          const AssetImage('assets/profile_picture.png'),
+                      backgroundImage: AssetImage('assets/profile_picture.png'),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -120,44 +72,34 @@ class ProfileScreen extends StatelessWidget {
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Kafama Göre :))',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontFamily: 'Oswald',
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onPrimary
-                              .withOpacity(0.8),
-                        ),
-                  ),
+                  // "Kafama Göre :))" yazısı kaldırıldı
                 ],
               ),
             ),
 
             const SizedBox(height: 20),
 
-            // Takipçi ve Takip Edilenler
+            // Takip bilgileri
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildStat(context, 'Takipçiler', '120'),
-                  _buildStat(context, 'Takip Edilenler', '80'),
+                  _buildStatBox('Takipçiler', '120'),
+                  _buildStatBox('Takip Edilenler', '80'),
                 ],
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
 
-            // Çalma Listeleri Başlığı
+            // Playlist başlığı
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Çalma Listeleri',
+                  'Çalma Listelerim',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontFamily: 'Oswald',
                       ),
@@ -165,21 +107,33 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
 
-            // Çalma listeleri
-            ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+            const SizedBox(height: 10),
+
+            // Playlist listesi
+            Column(
               children: [
                 _buildPlaylistTile(
-                    context, 'Chill Hits', 'Rahatlatıcı şarkılarım'),
+                    context, 'Chill Vibes', 'Rahatlatıcı parçalar'),
                 _buildPlaylistTile(
-                    context, 'Workout', 'Enerji dolu şarkılarım'),
-                _buildPlaylistTile(context, 'Top Hits', 'Popüler şarkılarım'),
-                _buildPlaylistTile(context, 'Classical', 'Klasik müzik'),
+                    context, 'Gym Pump', 'Spor için enerjik müzikler'),
                 _buildPlaylistTile(
-                    context, 'Rock Anthems', 'Efsanevi rock şarkılarım'),
+                    context, 'My Top 2025', 'En çok dinlediklerim'),
+                _buildPlaylistTile(
+                    context, 'Jazz Nights', 'Gece caz melodileri'),
               ],
+            ),
+
+            const SizedBox(height: 30),
+
+            // Diğer kısa yollar (isteğe bağlı)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  _buildFeatureCard(Icons.favorite, 'Favori Şarkılarım', () {}),
+                  // Ayarlar kartı kaldırıldı
+                ],
+              ),
             ),
           ],
         ),
@@ -187,112 +141,122 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // Takipçi ve Takip Edilenler için yardımcı fonksiyon
-  Widget _buildStat(BuildContext context, String title, String count) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+  // Takipçi ve takip edilen kutuları
+  Widget _buildStatBox(String title, String value) {
+    return Container(
+      width: 140,
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Colors.white,
+        border: Border.all(color: Colors.blue.shade200),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-        ),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            color: Colors.blue.shade50,
             blurRadius: 8,
-            offset: const Offset(0, 2),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
         children: [
           Text(
-            count,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  fontFamily: 'Oswald',
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+            value,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Oswald',
+              color: Colors.blue,
+            ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 4),
           Text(
             title,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontFamily: 'Oswald',
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+            style: const TextStyle(
+              fontSize: 14,
+              fontFamily: 'Oswald',
+              color: Colors.black54,
+            ),
           ),
         ],
       ),
     );
   }
 
-  // Çalma listesi elemanlarını gösteren fonksiyon
+  // Çalma listesi kutusu
   Widget _buildPlaylistTile(
       BuildContext context, String title, String subtitle) {
-    return InkWell(
-      onTap: () {
-        // Çalma listesine tıklanıldığında yapılacak işlem
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.blue.shade100),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blue.shade50,
+            blurRadius: 6,
+            offset: const Offset(0, 2),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.blue.shade50,
+              shape: BoxShape.circle,
             ),
-          ],
+            child: const Icon(CupertinoIcons.music_note, size: 20),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontFamily: 'Oswald',
+                      ),
+                ),
+                Text(
+                  subtitle,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontFamily: 'Oswald',
+                        color: Colors.black54,
+                      ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Ayarlar/Favoriler gibi kartlar
+  Widget _buildFeatureCard(IconData icon, String title, VoidCallback onTap) {
+    return Card(
+      elevation: 2,
+      margin: const EdgeInsets.only(bottom: 16),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        leading: Icon(icon, color: Colors.blue.shade400),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16,
+            fontFamily: 'Oswald',
+            fontWeight: FontWeight.w500,
+          ),
         ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
-              ),
-              child: const Icon(
-                CupertinoIcons.music_note_list,
-                size: 20,
-                color: Color.fromARGB(255, 150, 100, 120),
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontFamily: 'Oswald',
-                        ),
-                  ),
-                  Text(
-                    subtitle,
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontFamily: 'Oswald',
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withOpacity(0.7),
-                        ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        trailing: const Icon(Icons.chevron_right),
+        onTap: onTap,
       ),
     );
   }

@@ -36,39 +36,43 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 200,
+              height: 220,
               padding: const EdgeInsets.all(16),
-              color: Theme.of(context).colorScheme.primary,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.secondary,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.secondary,
-                        width: 4,
-                      ),
-                    ),
-                    child: const Icon(
-                      CupertinoIcons.person_circle,
-                      size: 100,
-                      color: Colors.white,
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      CupertinoIcons.person_fill,
+                      size: 50,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Hoş Geldin, Berrin!',
+                    'Hoş Geldin!',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontFamily: 'Oswald',
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: Colors.white,
                         ),
                   ),
                   Text(
-                    'Berrin Yılmaz',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    'Müziğin tadını çıkar 🎧',
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           fontFamily: 'Oswald',
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: Colors.white70,
                         ),
                   ),
                 ],
@@ -83,14 +87,6 @@ class HomeScreen extends StatelessWidget {
               leading: const Icon(CupertinoIcons.music_note_list),
               title: const Text('Son Çalınanlar'),
               onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
-              leading: const Icon(CupertinoIcons.settings),
-              title: const Text('Ayarlar'),
-              onTap: () {
-                Navigator.pop(context);
-                context.push("/settings");
-              },
             ),
           ],
         ),
